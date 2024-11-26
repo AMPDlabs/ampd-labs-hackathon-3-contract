@@ -1,4 +1,4 @@
-![Hackathon-3-banner](/hackathon-3-banner-github.png)
+![Hackathon-3-banner](/banner.png)
 
 # AMPD Labs - Open Hackathon 3
 Getting started with Solidity and Foundry. _We will build a smart contract using a FactoryPattern, deploy it to the Base blockchain on the Sepolia testnet and interact with the smart contract through base scan._
