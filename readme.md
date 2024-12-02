@@ -26,3 +26,18 @@ cast wallet import deployer --interactive
 ```
 To get your private key go to your CoinBase Wallet > Settings > Show Private Key. Paste it to the terminal after running the command and then set a password.
 
+## 🚀 Deployment 
+```bash
+forge create ./src/ProfileFactory.sol:ProfileFactory --rpc-url $BASE_SEPOLIA_RPC --account db --verify --etherscan-api-key $BASESCAN_API_KEY
+```
+
+## Verification of contract deployed by contract ✅
+```bash
+# Encode constructor args
+cast abi-encode "constructor(string,string,string[])" "test" "test" '[]'
+
+# Verify
+forge verify-contract --rpc-url $BASE_SEPOLIA_RPC --compiler-version 0.8.24 \
+  --optimizer-runs 200 --constructor-args 0x000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000000e000000000000000000000000000000000000000000000000000000000000000047465737400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000474657374000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 \
+0x743dd1F3Dbaef3fC7BE35CAD527299CaAd916c8f src/Profile.sol:Profile --etherscan-api-key $BASESCAN_API_KEY
+```
