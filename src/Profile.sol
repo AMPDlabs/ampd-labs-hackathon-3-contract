@@ -20,6 +20,7 @@ contract Profile is Ownable, ReentrancyGuard {
         string[] socialProfiles;
         Tip[] recentTips;
         uint256 totalTips;
+        uint256 created;
     }
 
     ProfileDetails private profileDetails;
@@ -28,6 +29,7 @@ contract Profile is Ownable, ReentrancyGuard {
         profileDetails.username = _username;
         profileDetails.aboutMe = _aboutMe;
         profileDetails.socialProfiles = _socialProfiles;
+        profileDetails.created = block.timestamp;
     }
 
     function updateAboutMe(string memory _aboutMe) public onlyOwner {

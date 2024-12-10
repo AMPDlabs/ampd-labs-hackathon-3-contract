@@ -29,12 +29,16 @@ contract ProfileFactory is Ownable, ReentrancyGuard {
         payable(owner()).transfer(address(this).balance);
     }
 
-    function getProfileByUsername(string memory _username) public view returns(address) {
+    function getProfileByUsername(string memory _username) public view returns (address) {
         return usernameToProfile[_username];
     }
 
-    function getProfiles() public view returns (Profile[] memory) {
-        return profiles;
+    function getProfiles() public view returns (Profile.ProfileDetails[] memory) {
+        Profile.ProfileDetails[] memory detailsArray = new Profile.ProfileDetails[](profiles.length);
+        for (uint256 i = 0; i < profiles.length; i++) {
+            detailsArray[i] = profiles[i].getProfileDetails();
+        }
+        return detailsArray;
     }
 
     // 1.📌 Implement `createProfile` to allow users to create profiles
